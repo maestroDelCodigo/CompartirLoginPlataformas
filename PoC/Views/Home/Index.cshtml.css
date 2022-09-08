@@ -1,0 +1,13 @@
+﻿body {
+    font-family:'Cascadia Code'
+}
+
+p{
+    color:red
+}
+#iconCrud {
+    height: 20px
+}
+h1{
+    text-align:center
+}

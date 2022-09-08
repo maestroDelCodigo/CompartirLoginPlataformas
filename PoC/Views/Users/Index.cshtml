@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PoC.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Usuarios</h1>
+
+<p>
+    <input type="button" id="buttonCreateUser" value="Crear nuevo usuario" onclick="location.href='@Url.Action("Create", "Users")'" />
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                 <a asp-action="Delete" asp-route-id="@item.IdUser"><img id="iconCrud" src="https://cdn-icons-png.flaticon.com/512/54/54324.png"/></a> |
+                 <a asp-action="Edit" asp-route-id="@item.IdUser"><img id="iconCrud" src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"/></a> |
+                 <a asp-action="Details" asp-route-id="@item.IdUser"><img id="iconCrud" src="https://cdn-icons-png.flaticon.com/512/751/751463.png"/></a> |
+                 <a href="@Url.Action("Create", "UserLogins", new { id = item.IdUser })"><img id="iconCrud" alt="Compartir login" src="https://cdn-icons-png.flaticon.com/512/929/929610.png"/></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

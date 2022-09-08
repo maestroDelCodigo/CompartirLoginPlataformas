@@ -1,0 +1,61 @@
+﻿@model PoC.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+   @* <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccessLogins)
+        </dt>
+        
+        @foreach (var item in Model.AccessLogins)
+        {
+                <dd>@item.PlataformLink</dd>
+        }
+        
+    </dl>*@
+    <table class="styled-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Access Login</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+            <td>@Html.DisplayFor(model => model.Email)</td>
+            <td>@foreach (var item in Model.AccessLogins)
+                    {
+                        @item.PlataformLink
+                        <span> | </span>
+                        
+                    }
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdUser"><button id="buttonCreateUser">Edit</button></a>
+    <a asp-action="Index"><button id="buttonCreateUser"> Back to List</button></a>
+</div>
